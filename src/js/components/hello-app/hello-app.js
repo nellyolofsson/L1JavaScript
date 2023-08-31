@@ -12,12 +12,6 @@ template.innerHTML = `
   color: white;
 }
 
-img {
-  width: 40%;
-  display:grid;
-  margin:auto;
-}
-
 .button {
   border-radius: 5px;
   margin: 5px;
@@ -94,13 +88,14 @@ customElements.define('hello-app',
       const data = await response.json()
       const catImage = data[0].url
       const catpics = document.createElement('img')
+      catpics.style = 'width: 20%;'
       catpics.setAttribute('src', `${catImage}`)
       // Display the user's name along with the cat picture
       const nameElement = document.createElement('p')
       nameElement.textContent = `Here's a cat picture for you, ${name}!`
       this.#catIMG.appendChild(nameElement)
       this.#catIMG.appendChild(catpics)
-      console.log(data)
+      return data
     }
   }
 )
